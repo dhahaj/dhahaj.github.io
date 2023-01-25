@@ -58,18 +58,19 @@
     vrEmuLcd.setLoadedCallback(function () {
 
       // create a new LCD object
-      lcd = vrEmuLcd.newLCD(128, 64, vrEmuLcd.CharacterRom.A00);
+      lcd = vrEmuLcd.newLCD(128*2, 128, vrEmuLcd.CharacterRom.A00);
 
       // set the color scheme
-      lcd.colorScheme = vrEmuLcd.Schemes.BlackOnGreen;
+      lcd.colorScheme = vrEmuLcd.Schemes.WhiteOnBlue;
 
       // set up the display
       lcd.sendCommand(LCD_CMD_DISPLAY | LCD_CMD_DISPLAY_ON | LCD_CMD_DISPLAY_CURSOR | LCD_CMD_DISPLAY_CURSOR_BLINK);
+      lcd.sendCommand(LCD_CMD_HOME);
       lcd.sendCommand(LCD_CMD_CLEAR);
 
       // output some text
-      var msg = "Hello, World!";
-      lcd.writeString(msg);
+      // var msg = "Hello, World!";
+      // lcd.writeString(msg);
 
       // run the display loop
       if (lcdLoop) {
